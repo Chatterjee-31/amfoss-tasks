@@ -1,7 +1,5 @@
 [package]
-
-name = "main.rs"
-path = "src/main.rs"
+name = "main"
 version = "0.1.0"
 authors = ["Chatterjee-31"]
 edition = "2018"
