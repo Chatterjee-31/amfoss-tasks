@@ -8,28 +8,27 @@ import (
         "os"
 )
 func main(){
-
-         tweetby:=flag.string("tweeterhandle",BhattacharDeb,"handler of user")
+         tweetby := flag.String("tweeterhandle","BhattacharDeb","handle of user")
          flag.Parse()
          config := oauth1.NewConfig("WxQPG0QcXsMbhnIChleuSjvhq", "K6qsXuQrSUpIwW0UrgtnMOCi73qCE6XQyoroTExsHhqsoqbJIu")
          token := oauth1.NewToken("1248636080800186369-4El0HFkpO1SvpbYT6fu5ovSTQZ7JBW", "UDiwignmneNx2peVTEUZdUYQTRePPOvOuxaaYFq3u0od8")
 
          httpClient := config.Client(oauth1.NoContext, token)
          client := twitter.NewClient(httpClient)
+         f,err := os.Create("twitterhandles.txt")
 
-
-
-         params := &twitter.FollowersListParam{
-         ScreenName: *tweetby,}
-         followers, resp, err := client.Followers.List(FollowerListParams)
-         fmt.Println(resp, err)
-
-         f,err := os.Create("twitterhandles.txt")}
+         params := &twitter.FollowerListParams{
+             ScreenName: *tweetby,
+         }
+         followers, resp, err := client.Followers.List(params)
 
          var count int = 0;
-         for _, follower := range followers{
+         fmt.Println(resp, err)
+         for _, follower := range followers.Users {
 	 count++
-	 f.WriteString("\n" + followers.ScreenName)}
+	 f.WriteString("\n" + follower.ScreenName)
+         }
 	
-	 f.WriteString(fmt.printf("\n", count))
+	 f.WriteString(fmt.Sprintf("\nNumber of followers: %d\n", count))
          f.Close()
+         }
