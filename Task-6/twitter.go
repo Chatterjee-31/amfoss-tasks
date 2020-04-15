@@ -10,8 +10,8 @@ import (
 func main(){
          tweetby := flag.String("tweeterhandle","BhattacharDeb","handle of user")
          flag.Parse()
-         config := oauth1.NewConfig("WxQPG0QcXsMbhnIChleuSjvhq", "K6qsXuQrSUpIwW0UrgtnMOCi73qCE6XQyoroTExsHhqsoqbJIu")
-         token := oauth1.NewToken("1248636080800186369-4El0HFkpO1SvpbYT6fu5ovSTQZ7JBW", "UDiwignmneNx2peVTEUZdUYQTRePPOvOuxaaYFq3u0od8")
+         config := oauth1.NewConfig("consumerKey", "consumerSecret")
+         token := oauth1.NewToken("accessToken", "accessSecret")
 
          httpClient := config.Client(oauth1.NoContext, token)
          client := twitter.NewClient(httpClient)
